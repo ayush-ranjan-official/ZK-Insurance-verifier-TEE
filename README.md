@@ -41,10 +41,10 @@ nc 127.0.0.1 8080
 
 1. Build Docker Image and Deploy on Docker Hub:
 ```bash
-docker build -t ayushranjan123/insurance-verifier:latest --push .
+docker buildx build --platform linux/amd64,linux/arm64 -t ayushranjan123/insurance-verifier:latest --push .
 ```
 
-2. Start the server:
+2. Start the server locally:
 ```bash
 docker run --rm --init -p 8080:8080 ayushranjan123/insurance-verifier
 ```
@@ -53,13 +53,33 @@ docker run --rm --init -p 8080:8080 ayushranjan123/insurance-verifier
 ```bash
 nc 127.0.0.1 8080
 ```
-
-4. Deploy On Oyster TEE:
+or
 ```bash
-oyster-cvm deploy --wallet-private-key <key> --duration-in-minutes 15 --docker-compose docker-compose.yml --arch amd64
+telnet 127.0.0.1 8080
 ```
 
-5. Interaction example:
+
+4. Deploy On Oyster TEE:
+
+For AMD64 Architecture-
+```bash
+oyster-cvm deploy --wallet-private-key <key> --duration-in-minutes 20 --docker-compose docker-compose.yml --arch amd64
+```
+For ARM64 Architecture-
+```bash
+oyster-cvm deploy --wallet-private-key <key> --duration-in-minutes 20 --docker-compose docker-compose.yml --instance-type c6g.xlarge
+```
+
+5. Start the server:
+```bash
+nc <IP> 8080
+```
+or
+```bash
+telnet <IP> 8080
+```
+
+6. Interaction example:
 ```
 ZK Insurance Verifier Server
 ============================
