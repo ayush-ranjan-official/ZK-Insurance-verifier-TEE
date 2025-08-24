@@ -39,14 +39,14 @@ nc 127.0.0.1 8080
 
 ## Usage Example
 
-1. Build Docker Image and Deploy on Docker Hub:
+1. Build Docker Image and Publish on Docker Hub:
 ```bash
 docker buildx build --platform linux/amd64,linux/arm64 -t ayushranjan123/insurance-verifier:latest --push .
 ```
 
 2. Start the server locally:
 ```bash
-docker run --rm --init -p 8080:8080 ayushranjan123/insurance-verifier
+sudo docker run --rm --init -p 8080:8080 ayushranjan123/insurance-verifier
 ```
 
 3. Connect from another terminal:

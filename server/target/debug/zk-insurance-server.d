@@ -1,1 +1,1 @@
-/home/ayush/Desktop/zk-rust/server/target/debug/zk-insurance-server: /home/ayush/Desktop/zk-rust/server/src/main.rs
+/home/ayush/zk-rust/server/target/debug/zk-insurance-server: /home/ayush/zk-rust/server/src/main.rs
