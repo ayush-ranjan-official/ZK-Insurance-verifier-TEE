@@ -48,6 +48,13 @@ docker buildx build --platform linux/amd64,linux/arm64 -t ayushranjan123/insuran
 ```bash
 sudo docker run --rm --init -p 8080:8080 ayushranjan123/insurance-verifier
 ```
+Test a particular architecture (e.g ARM64):
+```bash
+docker pull --platform linux/arm64 ayushranjan123/insurance-verifier:latest
+```
+```bash
+docker run --platform linux/arm64 --rm --init -p 8080:8080 ayushranjan123/insurance-verifier:latest
+```
 
 3. Connect from another terminal:
 ```bash
@@ -92,3 +99,32 @@ Success: true
 Message: Proof generated successfully! The user is eligible for insurance discount.
 ...
 ```
+
+## ARM64 Architecture Support
+
+This project includes a workaround for ARM64 Linux compatibility issues with Barretenberg v0.87.0. The issue occurs because the ARM64 Linux binary for Barretenberg v0.87.0 is not published, causing proof generation to fail.
+
+### The Problem
+When running on ARM64 architecture (like Oyster ARM64 architecture enclaves), you might encounter:
+```
+=== PROOF GENERATION RESULT ===
+Success: false
+Message: Proof file was not generated at path: /app/noir-circuit/target/proof
+```
+
+### The Solution
+Our Dockerfile automatically detects ARM64 architecture and applies a fix to the `bbup` script:
+
+1. **Detection**: The build process detects if the architecture is `aarch64` or `arm64`
+2. **Script Modification**: It modifies the `bbup` script to use Barretenberg v0.87.2 instead of v0.87.0 for ARM64 Linux
+3. **Implementation**: The fix is applied using an `awk` script that inserts version override logic before the download URL construction
+
+### Technical Details
+The workaround adds this logic to the `bbup` script:
+```bash
+if [[ "$architecture" == "arm64" ]] && [[ "$platform" == "linux" ]] && [[ "$release_tag" == "v0.87.0" ]]; then
+    release_tag="v0.87.2"
+fi
+```
+
+This ensures that ARM64 Linux systems download the compatible v0.87.2 binary instead of the unavailable v0.87.0 binary.
