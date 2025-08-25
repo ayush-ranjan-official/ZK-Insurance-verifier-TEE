@@ -1,6 +1,8 @@
 # ZK Insurance Verifier
 
-A zero-knowledge proof system for verifying insurance discount eligibility based on age and BMI without revealing the actual values.
+A zero-knowledge proof system for verifying insurance discount eligibility based on age and BMI without revealing the actual values. The Rust App generates a server which accepts private inputs and generates proof and public inputs.
+
+The whole app runs inside the Marlin oyster's CVM, which secures the App inside TEE enclaves (Your private inputs are secured and can't be leaked).
 
 ## Features
 
@@ -104,6 +106,10 @@ Message: Proof generated successfully! The user is eligible for insurance discou
 1. Deploy the `Verifier.sol` contract using Remix IDE, follow the steps from Noir Docs: https://noir-lang.org/docs/dev/how_to/how-to-solidity-verifier#step-2---compiling
 
 2. Use proof and public inputs generated from the application to verify.
+
+## Remote Attestation verification:
+
+`oyster-cvm verify --enclave-ip <ip>`
 
 ## ARM64 Architecture Support
 
