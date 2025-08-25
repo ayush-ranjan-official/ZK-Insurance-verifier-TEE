@@ -99,6 +99,11 @@ Success: true
 Message: Proof generated successfully! The user is eligible for insurance discount.
 ...
 ```
+## Proof Verification
+
+1. Deploy the `Verifier.sol` contract using Remix IDE, follow the steps from Noir Docs: https://noir-lang.org/docs/dev/how_to/how-to-solidity-verifier#step-2---compiling
+
+2. Use proof and public inputs generated from the application to verify.
 
 ## ARM64 Architecture Support
 
