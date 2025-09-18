@@ -54,7 +54,7 @@ sudo docker push ayushranjan123/insurance-verifier:latest
 sudo docker pull ayushranjan123/insurance-verifier:latest 
 ```
 ```bash
-docker run --rm --init -p 8080:8080 ayushranjan123/insurance-verifier:latest
+sudo docker run --rm --init -p 8080:8080 ayushranjan123/insurance-verifier:latest
 ```
 
 3. Connect from another terminal:
