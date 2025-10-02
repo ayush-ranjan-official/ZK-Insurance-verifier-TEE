@@ -19,7 +19,7 @@ RUN noirup
 RUN curl -L https://raw.githubusercontent.com/AztecProtocol/aztec-packages/refs/heads/master/barretenberg/bbup/install | bash
 ENV PATH="/root/.bb:${PATH}"
 # Install a specific known working version of barretenberg
-RUN /root/.bb/bbup -v 0.63.1 && \
+RUN /root/.bb/bbup -v 0.87.0 && \
     ln -sf /root/.bb/bb /usr/local/bin/bb
 
 # Verify installations
@@ -63,7 +63,7 @@ RUN noirup
 # Install Barretenberg in runtime with specific version
 RUN curl -L https://raw.githubusercontent.com/AztecProtocol/aztec-packages/refs/heads/master/barretenberg/bbup/install | bash
 ENV PATH="/root/.bb:${PATH}"
-RUN /root/.bb/bbup -v 0.63.1 && \
+RUN /root/.bb/bbup -v 0.87.0 && \
     ln -sf /root/.bb/bb /usr/local/bin/bb
 
 # Verify installations
