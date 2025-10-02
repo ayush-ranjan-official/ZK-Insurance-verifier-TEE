@@ -17,6 +17,8 @@ The whole app runs inside the Marlin oyster's CVM, which secures the App inside 
 
 - Docker and Docker Compose
 - Git
+- Nargo installed
+- bb (version: 0.87.0) installed
 
 ## Run Locally
 
